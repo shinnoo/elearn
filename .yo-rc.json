@@ -1,0 +1,47 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.trandung.elearn",
+      "nativeLanguage": "vi"
+    },
+    "jhipsterVersion": "6.3.1",
+    "applicationType": "monolith",
+    "baseName": "elearn",
+    "packageName": "com.trandung.elearn",
+    "packageFolder": "com/trandung/elearn",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OWY5ZGI3NzBiYmQ3ZDFlN2E5NGU2MjYxMWM3NmFjZGEwNmE2ZjUxYmIxOTY2MzgyZDNlYjRjMDQ2NThmM2RiN2YxOGVhNjYzYzQzYzg3OGE4MzAxZjJjNDAwYzJkZjQxMTRkZWUxODc0MTFlZmQ3YjM1ZmMxMDAzYTBlZmVlYWM=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-translation",
+        "version": "1.0.4"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "vi",
+    "languages": ["vi", "en"],
+    "blueprints": []
+  }
+}
