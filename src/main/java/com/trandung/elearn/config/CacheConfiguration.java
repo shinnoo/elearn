@@ -42,6 +42,9 @@ public class CacheConfiguration {
             createCache(cm, com.trandung.elearn.domain.User.class.getName());
             createCache(cm, com.trandung.elearn.domain.Authority.class.getName());
             createCache(cm, com.trandung.elearn.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.trandung.elearn.domain.Word.class.getName());
+            createCache(cm, com.trandung.elearn.domain.Session.class.getName());
+            createCache(cm, com.trandung.elearn.domain.Session.class.getName() + ".words");
             // jhipster-needle-ehcache-add-entry
         };
     }

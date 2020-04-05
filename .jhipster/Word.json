@@ -1,0 +1,49 @@
+{
+    "name": "Word",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "definition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pronounce",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "form",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "example",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "collocations",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "synonym",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "session",
+            "otherEntityRelationshipName": "word"
+        }
+    ],
+    "changelogDate": "20200401150929",
+    "entityTableName": "word",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

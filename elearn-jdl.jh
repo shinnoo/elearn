@@ -1,0 +1,46 @@
+entity Word {
+	name String,
+	definition String,
+	pronounce String,
+    form String,
+    example String,
+    collocations String,
+    synonym String,
+}
+
+entity User {
+	name String,
+    dateOfBirth Instant,
+    grender String,
+    address String,
+    phone String,
+    email String,
+    role Integer,
+    description String,
+    status Integer,
+    item Integer,
+    avatarUrl String
+}
+
+entity Session {
+	sessionNumber Integer,
+	scores Integer,
+    wrongAnswer Integer
+}
+
+// defining multiple ManyToOne relationships with comments
+relationship ManyToOne{
+	Word to Session{word}
+}
+
+// Set pagination options
+paginate Word, Session with pagination
+
+// Use Data Transfert Objects (DTO)
+ dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

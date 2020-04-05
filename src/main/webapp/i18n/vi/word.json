@@ -1,0 +1,29 @@
+{
+  "elearnApp": {
+    "word": {
+      "home": {
+        "title": "Words",
+        "createLabel": "Thêm mới một Word",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Word",
+        "notFound": "No Words found"
+      },
+      "created": "Một Word mới được tạo với định danh {{ param }}",
+      "updated": "Một Word cập nhật với định danh {{ param }}",
+      "deleted": "Một Word đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Word {{ id }}?"
+      },
+      "detail": {
+        "title": "Word"
+      },
+      "name": "Name",
+      "definition": "Definition",
+      "pronounce": "Pronounce",
+      "form": "Form",
+      "example": "Example",
+      "collocations": "Collocations",
+      "synonym": "Synonym",
+      "session": "Session"
+    }
+  }
+}

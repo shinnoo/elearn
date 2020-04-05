@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="word">
+            <h2><span jhiTranslate="elearnApp.word.detail.title">Word</span> {{word.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="elearnApp.word.name">Name</span></dt>
+                <dd>
+                    <span>{{word.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="elearnApp.word.definition">Definition</span></dt>
+                <dd>
+                    <span>{{word.definition}}</span>
+                </dd>
+                <dt><span jhiTranslate="elearnApp.word.pronounce">Pronounce</span></dt>
+                <dd>
+                    <span>{{word.pronounce}}</span>
+                </dd>
+                <dt><span jhiTranslate="elearnApp.word.form">Form</span></dt>
+                <dd>
+                    <span>{{word.form}}</span>
+                </dd>
+                <dt><span jhiTranslate="elearnApp.word.example">Example</span></dt>
+                <dd>
+                    <span>{{word.example}}</span>
+                </dd>
+                <dt><span jhiTranslate="elearnApp.word.collocations">Collocations</span></dt>
+                <dd>
+                    <span>{{word.collocations}}</span>
+                </dd>
+                <dt><span jhiTranslate="elearnApp.word.synonym">Synonym</span></dt>
+                <dd>
+                    <span>{{word.synonym}}</span>
+                </dd>
+                <dt><span jhiTranslate="elearnApp.word.session">Session</span></dt>
+                <dd>
+                    <div *ngIf="word.sessionId">
+                        <a [routerLink]="['/session', word.sessionId, 'view']">{{word.sessionId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/word', word.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="elearnApp.word.home.title">Words</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-word" [routerLink]="['/word/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="elearnApp.word.home.createLabel">
+            Create a new Word
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="words?.length === 0">
+        <span jhiTranslate="elearnApp.word.home.notFound">No words found</span>
+    </div>
+    <div class="table-responsive" *ngIf="words?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="elearnApp.word.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="definition"><span jhiTranslate="elearnApp.word.definition">Definition</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pronounce"><span jhiTranslate="elearnApp.word.pronounce">Pronounce</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="form"><span jhiTranslate="elearnApp.word.form">Form</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="example"><span jhiTranslate="elearnApp.word.example">Example</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="collocations"><span jhiTranslate="elearnApp.word.collocations">Collocations</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="synonym"><span jhiTranslate="elearnApp.word.synonym">Synonym</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sessionId"><span jhiTranslate="elearnApp.word.session">Session</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let word of words ;trackBy: trackId">
+                <td><a [routerLink]="['/word', word.id, 'view' ]">{{word.id}}</a></td>
+                <td>{{word.name}}</td>
+                <td>{{word.definition}}</td>
+                <td>{{word.pronounce}}</td>
+                <td>{{word.form}}</td>
+                <td>{{word.example}}</td>
+                <td>{{word.collocations}}</td>
+                <td>{{word.synonym}}</td>
+                <td>
+                    <div *ngIf="word.sessionId">
+                        <a [routerLink]="['/session', word.sessionId , 'view' ]" >{{word.sessionId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/word', word.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/word', word.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/word', { outlets: { popup: word.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="words?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

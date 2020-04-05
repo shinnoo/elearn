@@ -1,0 +1,34 @@
+{
+    "name": "Session",
+    "fields": [
+        {
+            "fieldName": "sessionNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "scores",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "wrongAnswer",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "word",
+            "otherEntityRelationshipName": "session",
+            "relationshipName": "word"
+        }
+    ],
+    "changelogDate": "20200401150931",
+    "entityTableName": "session",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
