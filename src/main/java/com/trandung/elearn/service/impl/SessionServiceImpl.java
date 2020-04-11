@@ -1,6 +1,7 @@
 package com.trandung.elearn.service.impl;
 
 import com.trandung.elearn.service.SessionService;
+import com.trandung.elearn.config.Constants;
 import com.trandung.elearn.domain.Session;
 import com.trandung.elearn.repository.SessionRepository;
 import com.trandung.elearn.service.dto.SessionDTO;
@@ -85,5 +86,19 @@ public class SessionServiceImpl implements SessionService {
     public void delete(Long id) {
         log.debug("Request to delete Session : {}", id);
         sessionRepository.deleteById(id);
+    }
+
+    @Override
+    public SessionDTO updateStatus(Long id, Integer status) {
+        Optional<Session> sessionOptional = sessionRepository.findById(id);
+        if (sessionOptional.isPresent()) {
+            Session session = sessionOptional.get();
+            if (!Constants.ENTITY_STATUS.DELETED.equals(session.getStatus())) {
+                session.setStatus(status);
+                sessionRepository.save(session);
+                return sessionMapper.toDto(session);
+            }
+        }
+        return null;
     }
 }

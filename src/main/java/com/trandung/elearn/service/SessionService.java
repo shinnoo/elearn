@@ -43,4 +43,6 @@ public interface SessionService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    SessionDTO updateStatus(Long id, Integer status);
 }

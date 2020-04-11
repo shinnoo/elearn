@@ -23,6 +23,8 @@ public class WordDTO implements Serializable {
 
     private String synonym;
 
+    private Integer status;
+
 
     private Long sessionId;
 
@@ -32,6 +34,14 @@ public class WordDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getName() {

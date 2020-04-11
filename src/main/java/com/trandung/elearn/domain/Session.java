@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "session")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Session implements Serializable {
+public class Session extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,6 +30,9 @@ public class Session implements Serializable {
 
     @Column(name = "wrong_answer")
     private Integer wrongAnswer;
+
+    @Column(name = "status")
+    private Integer status;
 
     @OneToMany(mappedBy = "session")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -68,6 +71,19 @@ public class Session implements Serializable {
 
     public void setScores(Integer scores) {
         this.scores = scores;
+    }
+
+    public Session status(Integer status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
     }
 
     public Integer getWrongAnswer() {

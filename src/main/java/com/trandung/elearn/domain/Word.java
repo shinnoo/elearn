@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "word")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Word implements Serializable {
+public class Word extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -41,6 +41,9 @@ public class Word implements Serializable {
 
     @Column(name = "synonym")
     private String synonym;
+
+    @Column(name = "status")
+    private Integer status;
 
     @ManyToOne
     @JsonIgnoreProperties("words")
@@ -157,6 +160,19 @@ public class Word implements Serializable {
 
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    public Word status(Integer status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

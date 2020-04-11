@@ -43,4 +43,6 @@ public interface WordService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    WordDTO updateStatus(Long id, Integer status);
 }

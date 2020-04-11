@@ -12,6 +12,13 @@ public final class Constants {
     public static final String DEFAULT_LANGUAGE = "vi";
     public static final String ANONYMOUS_USER = "anonymoususer";
 
+    public interface ENTITY_STATUS {
+
+        Integer DISABLED = -1;
+        Integer DELETED = 0;
+        Integer ACTIVE = 1;
+    }
+
     private Constants() {
     }
 }

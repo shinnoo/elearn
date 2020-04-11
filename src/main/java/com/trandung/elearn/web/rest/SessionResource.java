@@ -1,5 +1,6 @@
 package com.trandung.elearn.web.rest;
 
+import com.trandung.elearn.config.Constants;
 import com.trandung.elearn.service.SessionService;
 import com.trandung.elearn.web.rest.errors.BadRequestAlertException;
 import com.trandung.elearn.service.dto.SessionDTO;
@@ -57,6 +58,7 @@ public class SessionResource {
         if (sessionDTO.getId() != null) {
             throw new BadRequestAlertException("A new session cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        sessionDTO.setStatus(Constants.ENTITY_STATUS.ACTIVE);
         SessionDTO result = sessionService.save(sessionDTO);
         return ResponseEntity.created(new URI("/api/sessions/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -122,7 +124,7 @@ public class SessionResource {
     @DeleteMapping("/sessions/{id}")
     public ResponseEntity<Void> deleteSession(@PathVariable Long id) {
         log.debug("REST request to delete Session : {}", id);
-        sessionService.delete(id);
+        sessionService.updateStatus(id, Constants.ENTITY_STATUS.DELETED);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }

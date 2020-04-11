@@ -1,5 +1,6 @@
 package com.trandung.elearn.web.rest;
 
+import com.trandung.elearn.config.Constants;
 import com.trandung.elearn.service.WordService;
 import com.trandung.elearn.web.rest.errors.BadRequestAlertException;
 import com.trandung.elearn.service.dto.WordDTO;
@@ -57,6 +58,7 @@ public class WordResource {
         if (wordDTO.getId() != null) {
             throw new BadRequestAlertException("A new word cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        wordDTO.setStatus(Constants.ENTITY_STATUS.ACTIVE);
         WordDTO result = wordService.save(wordDTO);
         return ResponseEntity.created(new URI("/api/words/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -122,7 +124,7 @@ public class WordResource {
     @DeleteMapping("/words/{id}")
     public ResponseEntity<Void> deleteWord(@PathVariable Long id) {
         log.debug("REST request to delete Word : {}", id);
-        wordService.delete(id);
+        wordService.updateStatus(id, Constants.ENTITY_STATUS.DELETED);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }

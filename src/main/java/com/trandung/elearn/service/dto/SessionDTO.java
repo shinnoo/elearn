@@ -15,6 +15,8 @@ public class SessionDTO implements Serializable {
 
     private Integer wrongAnswer;
 
+    private Integer status;
+
 
     public Long getId() {
         return id;
@@ -22,6 +24,14 @@ public class SessionDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getSessionNumber() {

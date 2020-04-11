@@ -6,6 +6,7 @@ export interface ISession {
   scores?: number;
   wrongAnswer?: number;
   words?: IWord[];
+  status?: number;
 }
 
 export class Session implements ISession {
@@ -14,6 +15,7 @@ export class Session implements ISession {
     public sessionNumber?: number,
     public scores?: number,
     public wrongAnswer?: number,
-    public words?: IWord[]
+    public words?: IWord[],
+    public status?: number
   ) {}
 }

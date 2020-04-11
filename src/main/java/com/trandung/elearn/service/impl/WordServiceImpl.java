@@ -1,6 +1,7 @@
 package com.trandung.elearn.service.impl;
 
 import com.trandung.elearn.service.WordService;
+import com.trandung.elearn.config.Constants;
 import com.trandung.elearn.domain.Word;
 import com.trandung.elearn.repository.WordRepository;
 import com.trandung.elearn.service.dto.WordDTO;
@@ -85,5 +86,19 @@ public class WordServiceImpl implements WordService {
     public void delete(Long id) {
         log.debug("Request to delete Word : {}", id);
         wordRepository.deleteById(id);
+    }
+
+    @Override
+    public WordDTO updateStatus(Long id, Integer status) {
+        Optional<Word> wordOptional = wordRepository.findById(id);
+        if (wordOptional.isPresent()) {
+            Word word = wordOptional.get();
+            if (!Constants.ENTITY_STATUS.DELETED.equals(word.getStatus())) {
+                word.setStatus(status);
+                wordRepository.save(word);
+                return wordMapper.toDto(word);
+            }
+        }
+        return null;
     }
 }

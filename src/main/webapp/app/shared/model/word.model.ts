@@ -8,6 +8,7 @@ export interface IWord {
   collocations?: string;
   synonym?: string;
   sessionId?: number;
+  status?: number;
 }
 
 export class Word implements IWord {
@@ -20,6 +21,7 @@ export class Word implements IWord {
     public example?: string,
     public collocations?: string,
     public synonym?: string,
-    public sessionId?: number
+    public sessionId?: number,
+    public status?: number
   ) {}
 }
