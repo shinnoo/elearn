@@ -37,7 +37,7 @@ public class SessionRepositoryImpl implements SessionRepositoryCustom {
 
     @Override
     public Long count(MultiValueMap<String, String> queryParams) {
-        String sql = "select count(S) from Session A where A.status <> 0";
+        String sql = "select count(S) from Session S where S.status <> 0";
         Map<String, Object> values = new HashMap<>();
         sql += createWhereQuery(queryParams, values);
         Query query = entityManager.createQuery(sql, Long.class);
