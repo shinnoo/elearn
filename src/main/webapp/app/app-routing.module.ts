@@ -3,8 +3,9 @@ import { RouterModule } from '@angular/router';
 import { errorRoute } from './layouts/error/error.route';
 import { navbarRoute } from './layouts/navbar/navbar.route';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
+import { sidebarRoute } from './layouts/sidebar/sidebar.route';
 
-const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
+const LAYOUT_ROUTES = [navbarRoute, ...errorRoute, sidebarRoute];
 
 @NgModule({
   imports: [
