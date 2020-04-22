@@ -20,6 +20,7 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { ElearnLearningModule } from './learning/learning.module';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
     ElearnHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     ElearnEntityModule,
-    ElearnAppRoutingModule
+    ElearnAppRoutingModule,
+    ElearnLearningModule
   ],
   declarations: [
     JhiMainComponent,

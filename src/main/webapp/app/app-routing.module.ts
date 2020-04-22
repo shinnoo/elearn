@@ -19,6 +19,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute, sidebarRoute];
           path: 'account',
           loadChildren: () => import('./account/account.module').then(m => m.ElearnAccountModule)
         },
+        {
+          path: 'learning',
+          loadChildren: () => import('./learning/learning.module').then(m => m.ElearnLearningModule)
+        },
         ...LAYOUT_ROUTES
       ],
       { enableTracing: DEBUG_INFO_ENABLED }
