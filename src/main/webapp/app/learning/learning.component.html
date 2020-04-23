@@ -1,1 +1,11 @@
-<p>learning works!</p>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-2">
+            <div *ngFor="let session of sessions">
+                <button>{{session.sessionNumber}}</button>
+            </div>
+        </div>
+        <div class="col-4">word</div>
+        <div class="col-6">datails</div>
+    </div>
+</div>
