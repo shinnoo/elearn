@@ -1,10 +1,10 @@
 .sidebar-container {
-  width: 250px;
+  width: 200px;
   height: 100vh;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 
 .sidebar-active {
-  margin-left: -250px;
-  transition: all 0.3s;
+  margin-left: -200px;
+  transition: all 0.2s;
 }
