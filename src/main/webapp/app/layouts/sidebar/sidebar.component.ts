@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  sidebarStatus = false;
+  sidebarStatus = true;
   eventSubscriber: Subscription;
 
   constructor(protected eventManager: JhiEventManager) {}
