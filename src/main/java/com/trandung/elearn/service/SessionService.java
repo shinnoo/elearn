@@ -45,4 +45,6 @@ public interface SessionService {
     void delete(Long id);
 
     SessionDTO updateStatus(Long id, Integer status);
+
+    Page<SessionDTO> findAllByCreatedBy(Pageable pageable, String createdBy);    
 }

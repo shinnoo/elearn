@@ -35,4 +35,9 @@ export class SessionService {
   delete(id: number): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+
+  getSessions(user: String, req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<ISession[]>(`${this.resourceUrl}/user/${user}`, { params: options, observe: 'response' });
+  }
 }

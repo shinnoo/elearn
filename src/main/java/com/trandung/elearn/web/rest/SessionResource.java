@@ -127,4 +127,12 @@ public class SessionResource {
         sessionService.updateStatus(id, Constants.ENTITY_STATUS.DELETED);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/sessions/user/{login}")
+    public ResponseEntity<List<SessionDTO>> getSessionsByUser(Pageable pageable,@PathVariable String login) {
+        log.debug("REST request to get a page of Sessions by: {}", login);
+        Page<SessionDTO> page = sessionService.findAllByCreatedBy(pageable, login);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
 }
