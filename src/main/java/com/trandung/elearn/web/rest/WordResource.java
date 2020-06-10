@@ -127,4 +127,19 @@ public class WordResource {
         wordService.updateStatus(id, Constants.ENTITY_STATUS.DELETED);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+        /**
+     * Get tee-designs liked by login
+     *
+     * @param login
+     * @param pageable
+     * @return
+     */
+    @GetMapping("/words/user/{login}")
+    public ResponseEntity<List<WordDTO>> getSessionsByUser(Pageable pageable, @PathVariable String login) {
+        log.debug("REST request to get a page of Words by: {}", login);
+        Page<WordDTO> page = wordService.findAllByCreatedBy(pageable, login);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
 }

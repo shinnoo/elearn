@@ -101,4 +101,12 @@ public class WordServiceImpl implements WordService {
         }
         return null;
     }
+
+    @Override
+    public Page<WordDTO> findAllByCreatedBy(Pageable pageable, String createdBy) {
+        log.debug("Request to get all Words by CreatedBy");
+        return wordRepository.findAllByCreatedBy(pageable, createdBy)
+            .map(wordMapper::toDto);
+    }
+
 }

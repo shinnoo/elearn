@@ -45,4 +45,6 @@ public interface WordService {
     void delete(Long id);
 
     WordDTO updateStatus(Long id, Integer status);
+
+    Page<WordDTO> findAllByCreatedBy(Pageable pageable, String createdBy);    
 }

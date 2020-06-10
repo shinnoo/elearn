@@ -101,4 +101,13 @@ public class SessionServiceImpl implements SessionService {
         }
         return null;
     }
+
+    @Override
+    public Page<SessionDTO> findAllByCreatedBy(Pageable pageable, String createdBy) {
+        log.debug("Request to get all Sessions by CreatedBy");
+        return sessionRepository.findAllByCreatedBy(pageable, createdBy)
+            .map(sessionMapper::toDto);
+    }
+
+
 }
